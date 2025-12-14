@@ -75,7 +75,6 @@ Mithai-Mitra/
 ├── img/
 └── README.md
 
-
 🚀 How to Run the Project
 Prerequisites
 - Any modern web browser
