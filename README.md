@@ -54,26 +54,27 @@ It helped me learn dashboard design, authentication, and data handling while cre
 - Storage: LocalStorage (for demo data)
 
 📁 Project Structure
-Mithai-Mitra/
-├── index.html          # Login page
-├── login.html          # Signup page
-├── afterlogin.html     # Dashboard
+Mithai Mitra/
+├── index.html              # Login page
+├── login.html               # Signup page
+├── afterlogin.html          # Main dashboard
+├── style.css               # Login/Signup styles
+├── README.md               # Project documentation
 ├── css/
-│   └── style.css
+│   └── style.css           # Dashboard styles
 ├── js/
-│   ├── mainDashboard.js
-│   ├── inventory.js
-│   ├── customers.js
-│   ├── reports.js
-│   └── storageService.js
+│   ├── dashboard.js        # Dashboard functionality
+│   ├── inventory.js        # Inventory management
+│   ├── customers.js        # Customer management
+│   ├── reports.js          # Reports and analytics
+│   └── data-manager.js     # Data handling utilities
 ├── pages/
-│   ├── inventory.html
-│   ├── sales.html
-│   ├── customers.html
-│   ├── reports.html
-│   └── settings.html
-├── img/
-└── README.md
+│   ├── inventory.html      # Inventory management page
+│   ├── sales.html          # Sales management page
+│   ├── customers.html      # Customer management page
+│   ├── reports.html        # Reports and analytics page
+│   └── settings.html       # Settings page
+└── img/                    # Images and assets
 
 🚀 How to Run the Project
 Prerequisites
