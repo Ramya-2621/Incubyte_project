@@ -54,7 +54,7 @@ It helped me learn dashboard design, authentication, and data handling while cre
 - Storage: LocalStorage (for demo data)
 
 📁 Project Structure
-Mithai Mitra/
+Sweet-Delights/
 ├── index.html              # Login page
 ├── login.html               # Signup page
 ├── afterlogin.html          # Main dashboard
