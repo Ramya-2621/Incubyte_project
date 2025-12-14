@@ -1,0 +1,6 @@
+id,name,phone,email,address,total_orders,last_order_date,created_at
+1,John Doe,9876543210,john@example.com,"123 Main St, Mumbai",5,2024-01-15,2024-01-01
+2,Jane Smith,9876543211,jane@example.com,"456 Oak Ave, Delhi",3,2024-01-15,2024-01-05
+3,Mike Johnson,9876543212,mike@example.com,"789 Pine Rd, Bangalore",2,2024-01-15,2024-01-10
+4,Sarah Wilson,sarah.w@email.com,+91-9876543213,321 Koramangala,Bangalore,560034,2024-01-18,₹950,2024-01-21,47
+5,David Brown,david.b@email.com,+91-9876543214,654 Indiranagar,Bangalore,560038,2024-01-19,₹0,2024-01-19,0

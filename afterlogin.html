@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sweet Delights - Management Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <h2><i class="fas fa-candy-cane"></i> Sweet Delights</h2>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+            <li><a href="pages/inventory.html"><i class="fas fa-boxes"></i> Inventory</a></li>
+            <li><a href="pages/sales.html"><i class="fas fa-cash-register"></i> Sales</a></li>
+            <li><a href="pages/customers.html"><i class="fas fa-users"></i> Customers</a></li>
+            <li><a href="pages/reports.html"><i class="fas fa-chart-bar"></i> Reports</a></li>
+            <li><a href="pages/settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+        </ul>
+    </nav>
+
+    <main class="main-content">
+        <header class="main-header">
+            <h1>Dashboard</h1>
+            <div class="header-actions">
+                <button class="btn-primary" onclick="location.href='pages/sales.html'"><i class="fas fa-plus"></i> Quick Sale</button>
+                <div class="user-profile">
+                    <span>Welcome, Manager</span>
+                    <i class="fas fa-user-circle"></i>
+                </div>
+            </div>
+        </header>
+
+        <div class="dashboard-grid">
+            <div class="stat-cards">
+                <div class="stat-card revenue">
+                    <div class="stat-icon">
+                        <i class="fas fa-rupee-sign"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Today's Revenue</h3>
+                        <p class="stat-value" id="todayRevenue">₹0</p>
+                        <span class="stat-change positive">+12% from yesterday</span>
+                    </div>
+                </div>
+
+                <div class="stat-card orders">
+                    <div class="stat-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Orders Today</h3>
+                        <p class="stat-value" id="todayOrders">0</p>
+                        <span class="stat-change positive">+8% from yesterday</span>
+                    </div>
+                </div>
+
+                <div class="stat-card customers">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Total Customers</h3>
+                        <p class="stat-value" id="totalCustomers">0</p>
+                        <span class="stat-change positive">+5 new today</span>
+                    </div>
+                </div>
+
+                <div class="stat-card inventory">
+                    <div class="stat-icon">
+                        <i class="fas fa-boxes"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Low Stock Items</h3>
+                        <p class="stat-value" id="lowStockItems">0</p>
+                        <span class="stat-change warning">Needs attention</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="charts-section">
+                <div class="chart-container">
+                    <h3>Sales Overview</h3>
+                    <canvas id="salesChart"></canvas>
+                </div>
+
+                <div class="chart-container">
+                    <h3>Popular Products</h3>
+                    <canvas id="productsChart"></canvas>
+                </div>
+            </div>
+
+            <div class="recent-activities">
+                <h3>Recent Activities</h3>
+                <div class="activity-list" id="activityList">
+                    <div class="activity-item">
+                        <i class="fas fa-shopping-cart"></i>
+                        <div>
+                            <p><strong>New order #1001</strong></p>
+                            <span>2 minutes ago</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quick-actions">
+                <h3>Quick Actions</h3>
+                <div class="action-buttons">
+                    <button class="action-btn" onclick="location.href='pages/inventory.html'">
+                        <i class="fas fa-plus"></i>
+                        Add Product
+                    </button>
+                    <button class="action-btn" onclick="location.href='pages/sales.html'">
+                        <i class="fas fa-cash-register"></i>
+                        New Sale
+                    </button>
+                    <button class="action-btn" onclick="location.href='pages/customers.html'">
+                        <i class="fas fa-user-plus"></i>
+                        Add Customer
+                    </button>
+                    <button class="action-btn" onclick="location.href='pages/reports.html'">
+                        <i class="fas fa-download"></i>
+                        Export Report
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

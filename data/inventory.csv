@@ -1,0 +1,6 @@
+id,product_name,category,price,stock_quantity,min_stock_level,supplier,last_updated
+1,Chocolate Cake,Cakes,₹450,25,5,Sweet Suppliers,2024-01-15
+2,Vanilla Cupcakes,Cupcakes,₹50,100,20,Local Bakery,2024-01-15
+3,Red Velvet Cake,Cakes,₹650,15,3,Sweet Suppliers,2024-01-15
+4,Donuts Pack,Donuts,₹300,50,10,Donut Factory,2024-01-15
+5,Brownies,Desserts,₹200,30,8,Chocolate Co,2024-01-15

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Management - Sweet Delights</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <h2><i class="fas fa-candy-cane"></i> Sweet Delights</h2>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../index.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+            <li><a href="inventory.html"><i class="fas fa-boxes"></i> Inventory</a></li>
+            <li><a href="sales.html"><i class="fas fa-cash-register"></i> Sales</a></li>
+            <li><a href="customers.html" class="active"><i class="fas fa-users"></i> Customers</a></li>
+            <li><a href="reports.html"><i class="fas fa-chart-bar"></i> Reports</a></li>
+            <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+        </ul>
+    </nav>
+
+    <main class="main-content">
+        <header class="main-header">
+            <h1>Customer Management</h1>
+            <div class="header-actions">
+                <button class="btn-primary" onclick="openAddCustomerModal()">
+                    <i class="fas fa-user-plus"></i> Add Customer
+                </button>
+                <button class="btn-secondary" onclick="exportCustomers()">
+                    <i class="fas fa-download"></i> Export
+                </button>
+            </div>
+        </header>
+
+        <div class="customers-overview">
+            <div class="stat-cards">
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Total Customers</h3>
+                        <p class="stat-value" id="totalCustomers">0</p>
+                        <span class="stat-change positive">Registered users</span>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, var(--success-color), #32CD32);">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Active Customers</h3>
+                        <p class="stat-value" id="activeCustomers">0</p>
+                        <span class="stat-change positive">Recent purchases</span>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, var(--accent-color), #FFA500);">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>New This Month</h3>
+                        <p class="stat-value" id="newCustomers">0</p>
+                        <span class="stat-change positive">Recent signups</span>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, var(--warning-color), #DAA520);">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>VIP Customers</h3>
+                        <p class="stat-value" id="vipCustomers">0</p>
+                        <span class="stat-change positive">High value</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="customers-filters">
+            <div class="form-container">
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="text" id="searchCustomers" placeholder="Search customers...">
+                    </div>
+                    <div class="form-group">
+                        <select id="customerTypeFilter">
+                            <option value="">All Types</option>
+                            <option value="regular">Regular</option>
+                            <option value="vip">VIP</option>
+                            <option value="new">New</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <select id="statusFilter">
+                            <option value="">All Status</option>
+                            <option value="active">Active</option>
+                            <option value="inactive">Inactive</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <div class="table-header">
+                <h3>Customer List</h3>
+                <div class="table-actions">
+                    <button class="btn-secondary" onclick="refreshCustomers()">
+                        <i class="fas fa-refresh"></i> Refresh
+                    </button>
+                </div>
+            </div>
+            <table id="customersTable">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Type</th>
+                        <th>Total Orders</th>
+                        <th>Total Spent</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="customersTableBody">
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <!-- Add Customer Modal -->
+    <div id="addCustomerModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add New Customer</h2>
+                <span class="close" onclick="closeAddCustomerModal()">&times;</span>
+            </div>
+            <form id="addCustomerForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="customerFirstName">First Name</label>
+                        <input type="text" id="customerFirstName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="customerLastName">Last Name</label>
+                        <input type="text" id="customerLastName" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="customerEmail">Email</label>
+                        <input type="email" id="customerEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="customerPhone">Phone</label>
+                        <input type="tel" id="customerPhone" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="customerAddress">Address</label>
+                    <textarea id="customerAddress" rows="3"></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="customerType">Customer Type</label>
+                        <select id="customerType">
+                            <option value="regular">Regular</option>
+                            <option value="vip">VIP</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="customerBirthdate">Birthdate (Optional)</label>
+                        <input type="date" id="customerBirthdate">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn-primary">
+                        <i class="fas fa-save"></i> Add Customer
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Customer Details Modal -->
+    <div id="customerDetailsModal" class="modal">
+        <div class="modal-content" style="max-width: 800px;">
+            <div class="modal-header">
+                <h2>Customer Details</h2>
+                <span class="close" onclick="closeCustomerDetailsModal()">&times;</span>
+            </div>
+            <div id="customerDetailsContent">
+                <!-- Content will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/customers.js"></script>
+</body>
+</html>

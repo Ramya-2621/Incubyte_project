@@ -1,0 +1,6 @@
+log_id,product_id,product_name,action,quantity_change,previous_stock,new_stock,reason,date,time,user
+1,1,Chocolate Cake,Stock In,30,0,30,Initial Stock,2024-01-15,09:00:00,Manager
+2,2,Vanilla Cupcakes,Stock In,60,0,60,Initial Stock,2024-01-15,09:00:00,Manager
+3,1,Chocolate Cake,Sale,-1,25,24,Sale Transaction #1001,2024-01-20,10:30:00,Manager
+4,2,Vanilla Cupcakes,Sale,-2,50,48,Sale Transaction #1002,2024-01-20,11:15:00,Manager
+5,4,Chocolate Cookies,Sale,-1,100,99,Sale Transaction #1003,2024-01-20,14:20:00,Manager

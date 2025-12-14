@@ -1,0 +1,6 @@
+id,name,category,price,cost,stock,min_stock,supplier,description,date_added,last_updated
+1,Chocolate Cake,Cakes,₹850,₹400,25,5,Local Bakery,Rich chocolate cake with cream,2024-01-15,2024-01-15
+2,Vanilla Cupcakes,Cupcakes,₹120,₹60,50,10,Sweet Suppliers,Pack of 4 vanilla cupcakes,2024-01-15,2024-01-15
+3,Strawberry Pastry,Pastries,₹180,₹90,15,5,Local Bakery,Fresh strawberry pastry,2024-01-15,2024-01-15
+4,Chocolate Cookies,Cookies,₹200,₹100,100,20,Cookie Co,Pack of 12 cookies,2024-01-15,2024-01-15
+5,Red Velvet Cake,Cakes,₹950,₹450,10,3,Premium Bakers,Premium red velvet cake,2024-01-15,2024-01-15

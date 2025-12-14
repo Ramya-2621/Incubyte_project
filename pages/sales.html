@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Management - Sweet Delights</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <h2><i class="fas fa-candy-cane"></i> Sweet Delights</h2>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../index.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+            <li><a href="inventory.html"><i class="fas fa-boxes"></i> Inventory</a></li>
+            <li><a href="sales.html" class="active"><i class="fas fa-cash-register"></i> Sales</a></li>
+            <li><a href="customers.html"><i class="fas fa-users"></i> Customers</a></li>
+            <li><a href="reports.html"><i class="fas fa-chart-bar"></i> Reports</a></li>
+            <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+        </ul>
+    </nav>
+
+    <main class="main-content">
+        <header class="main-header">
+            <h1>Sales Management</h1>
+            <div class="header-actions">
+                <button class="btn-primary" onclick="openNewSaleModal()">
+                    <i class="fas fa-plus"></i> New Sale
+                </button>
+                <button class="btn-secondary" onclick="exportSales()">
+                    <i class="fas fa-download"></i> Export
+                </button>
+            </div>
+        </header>
+
+        <div class="sales-overview">
+            <div class="stat-cards">
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, var(--success-color), #32CD32);">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Today's Sales</h3>
+                        <p class="stat-value" id="todaySales">$0</p>
+                        <span class="stat-change positive" id="todayChange">+0% from yesterday</span>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, var(--accent-color), #FFA500);">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Orders Today</h3>
+                        <p class="stat-value" id="todayOrders">0</p>
+                        <span class="stat-change positive" id="ordersChange">+0 orders</span>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Average Order</h3>
+                        <p class="stat-value" id="averageOrder">$0</p>
+                        <span class="stat-change positive">Per transaction</span>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, var(--warning-color), #DAA520);">
+                        <i class="fas fa-calendar-week"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>This Week</h3>
+                        <p class="stat-value" id="weekSales">$0</p>
+                        <span class="stat-change positive" id="weekChange">Weekly total</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sales-filters">
+            <div class="form-container">
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="text" id="searchSales" placeholder="Search orders...">
+                    </div>
+                    <div class="form-group">
+                        <input type="date" id="dateFrom" title="From Date">
+                    </div>
+                    <div class="form-group">
+                        <input type="date" id="dateTo" title="To Date">
+                    </div>
+                    <div class="form-group">
+                        <select id="statusFilter">
+                            <option value="">All Status</option>
+                            <option value="completed">Completed</option>
+                            <option value="pending">Pending</option>
+                            <option value="cancelled">Cancelled</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <div class="table-header">
+                <h3>Recent Sales</h3>
+                <div class="table-actions">
+                    <button class="btn-secondary" onclick="refreshSales()">
+                        <i class="fas fa-refresh"></i> Refresh
+                    </button>
+                </div>
+            </div>
+            <table id="salesTable">
+                <thead>
+                    <tr>
+                        <th>Order #</th>
+                        <th>Date</th>
+                        <th>Customer</th>
+                        <th>Items</th>
+                        <th>Total</th>
+                        <th>Payment</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="salesTableBody">
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <!-- New Sale Modal -->
+    <div id="newSaleModal" class="modal">
+        <div class="modal-content" style="max-width: 800px;">
+            <div class="modal-header">
+                <h2>New Sale</h2>
+                <span class="close" onclick="closeNewSaleModal()">&times;</span>
+            </div>
+            <div id="saleModalContent">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="customerSelect">Customer</label>
+                        <select id="customerSelect">
+                            <option value="">Select Customer (Optional)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="paymentMethod">Payment Method</label>
+                        <select id="paymentMethod" required>
+                            <option value="cash">Cash</option>
+                            <option value="card">Credit/Debit Card</option>
+                            <option value="mobile">Mobile Payment</option>
+                        </select>
+                    </div>
+                </div>
+
+                <h3>Add Products</h3>
+                <div class="product-search">
+                    <div class="form-group">
+                        <input type="text" id="productSearch" placeholder="Search products...">
+                    </div>
+                    <div id="productResults" class="product-results"></div>
+                </div>
+
+                <h3>Cart Items</h3>
+                <div id="cartItems" class="cart-items">
+                    <p>No items in cart</p>
+                </div>
+
+                <div class="sale-total">
+                    <div class="total-row">
+                        <span>Subtotal:</span>
+                        <span id="subtotal">$0.00</span>
+                    </div>
+                    <div class="total-row">
+                        <span>Tax (8%):</span>
+                        <span id="tax">$0.00</span>
+                    </div>
+                    <div class="total-row total-final">
+                        <span><strong>Total:</strong></span>
+                        <span id="total"><strong>$0.00</strong></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <button type="button" class="btn-primary" onclick="completeSale()">
+                        <i class="fas fa-check"></i> Complete Sale
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/sales.js"></script>
+</body>
+</html>

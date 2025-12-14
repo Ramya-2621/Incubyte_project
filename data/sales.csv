@@ -1,0 +1,6 @@
+id,date,customer_name,customer_phone,items,total_amount,payment_method,status,created_at
+1,2024-01-15,John Doe,9876543210,"Chocolate Cake,Vanilla Cupcakes",₹850,Cash,Completed,2024-01-15T10:30:00
+2,2024-01-15,Jane Smith,9876543211,"Red Velvet Cake",₹650,UPI,Completed,2024-01-15T11:15:00
+3,2024-01-15,Mike Johnson,9876543212,"Donuts Pack",₹300,Card,Completed,2024-01-15T14:20:00
+1004,3,Mike Johnson,3,Strawberry Pastry,3,₹180,₹540,UPI,2024-01-20,16:45:00,Manager,0
+1005,4,Sarah Wilson,5,Red Velvet Cake,1,₹950,₹950,Card,2024-01-21,09:30:00,Manager,50
