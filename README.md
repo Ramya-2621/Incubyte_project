@@ -53,7 +53,6 @@ It helped me learn dashboard design, authentication, and data handling while cre
 - Fonts: Google Fonts
 - Storage: LocalStorage (for demo data)
 
-📁 Project Structure
 ## 📁 Project Structure
 
 ```bash
@@ -93,12 +92,8 @@ Steps:
    http://localhost:8000
 
 🔑 Demo Login Credentials
-User: user@demo.com
- | Password: demo123
-
-Admin: admin@demo.com
- | Password: admin123
-
+- User: user@demo.com | Password: demo123
+- Admin: admin@demo.com | Password: admin123
  
 🇮🇳 Indian Business Context
 - Currency displayed in Indian Rupees (₹)
