@@ -217,16 +217,6 @@ const firebaseConfig = {
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🆘 Support
-
-For support and questions:
-- Open an issue on GitHub
-- Contact: support@sweetdelights.com
-- Documentation: [Project Wiki]
 
 ## 🔮 Future Enhancements
 
@@ -252,4 +242,4 @@ For support and questions:
 
 **Sweet Delights** - Sweetening your business management experience! 🍭
 
-Made with ❤️ for Indian sweet shops and confectioneries.
+
